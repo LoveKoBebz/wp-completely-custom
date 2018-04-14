@@ -8,3 +8,8 @@ function theme_enqueue_assets() {
     wp_enqueue_script('theme_scripts', get_theme_file_uri('/js/scripts-bundled.js'), null, '1.0', true);
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_assets');
+
+function theme_setup_supports() {
+    add_theme_support('title-tag');
+}
+add_action('after_setup_theme', 'theme_setup_supports');
