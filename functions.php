@@ -13,3 +13,15 @@ function theme_setup_supports() {
     add_theme_support('title-tag');
 }
 add_action('after_setup_theme', 'theme_setup_supports');
+
+function get_page_parent_id($id = null) {
+    return wp_get_post_parent_id($id ? $id : get_the_ID());
+}
+
+function get_page_parent_permalink($id = null) {
+    return get_permalink($id ? $id : get_page_parent_id());
+}
+
+function get_page_parent_title($id = null) {
+    return get_the_title($id ? $id : get_page_parent_id());
+}

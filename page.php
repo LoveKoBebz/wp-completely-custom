@@ -15,6 +15,18 @@
     </div>
 
     <div class="container container--narrow page-section">
+        <?php if (get_page_parent_id()) : ?>
+            <div class="metabox metabox--position-up metabox--with-home-link">
+                <p>
+                    <a class="metabox__blog-home-link" href="<?php echo get_page_parent_permalink(); ?>">
+                        <i class="fa fa-home" aria-hidden="true"></i> Back to <?php echo get_page_parent_title(); ?>
+                    </a>
+
+                    <span class="metabox__main"><?php the_title(); ?></span>
+                </p>
+            </div>
+        <?php endif; ?>
+
         <div class="generic-content">
             <?php the_content(); ?>
         </div>
