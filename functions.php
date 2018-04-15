@@ -15,13 +15,31 @@ function theme_setup_supports() {
 add_action('after_setup_theme', 'theme_setup_supports');
 
 function get_page_parent_id($id = null) {
-    return wp_get_post_parent_id($id ? $id : get_the_ID());
+    return wp_get_post_parent_id($id ?: get_the_ID());
+}
+
+function get_page_parent_or_child_id($id = null) {
+    return get_page_parent_id($id) ?: get_the_ID();
+}
+
+function is_page_parent($id = null) {
+    return get_page_parent_id($id) > 0;
+}
+
+function is_page_child($id = null) {
+    return get_pages([
+        'child_of' => $id ?: get_the_ID(),
+    ]);
+}
+
+function is_page_parent_or_child($id = null) {
+    return is_page_parent($id) || is_page_child($id);
 }
 
 function get_page_parent_permalink($id = null) {
-    return get_permalink($id ? $id : get_page_parent_id());
+    return get_permalink($id ?: get_page_parent_id());
 }
 
 function get_page_parent_title($id = null) {
-    return get_the_title($id ? $id : get_page_parent_id());
+    return get_the_title($id ?: get_page_parent_id());
 }

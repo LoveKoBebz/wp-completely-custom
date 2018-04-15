@@ -15,7 +15,7 @@
     </div>
 
     <div class="container container--narrow page-section">
-        <?php if (get_page_parent_id()) : ?>
+        <?php if (is_page_parent()) : ?>
             <div class="metabox metabox--position-up metabox--with-home-link">
                 <p>
                     <a class="metabox__blog-home-link" href="<?php echo get_page_parent_permalink(); ?>">
@@ -24,6 +24,24 @@
 
                     <span class="metabox__main"><?php the_title(); ?></span>
                 </p>
+            </div>
+        <?php endif; ?>
+
+        <?php if (is_page_parent_or_child()) : ?>
+            <div class="page-links">
+                <h2 class="page-links__title">
+                    <a href="<?php echo get_page_parent_permalink(); ?>">
+                        <?php echo get_page_parent_title(); ?>
+                    </a>
+                </h2>
+
+                <ul class="min-list">
+                    <?php echo wp_list_pages([
+                        'title_li' => null,
+                        'child_of' => get_page_parent_or_child_id(),
+                        'sort_column' => 'menu_order'
+                    ]); ?>
+                </ul>
             </div>
         <?php endif; ?>
 
