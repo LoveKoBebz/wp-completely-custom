@@ -9,7 +9,9 @@
     <header class="site-header">
         <div class="container">
             <h1 class="school-logo-text float-left">
-                <a href="#"><strong>Completely</strong> Custom</a>
+                <a href="<?php echo site_url(); ?>">
+                    <strong>Completely</strong> Custom
+                </a>
             </h1>
 
             <span class="js-search-trigger site-header__search-trigger">
@@ -19,13 +21,9 @@
 
             <div class="site-header__menu group">
                 <nav class="main-navigation">
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Programs</a></li>
-                        <li><a href="#">Events</a></li>
-                        <li><a href="#">Campuses</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
+                    <?php wp_nav_menu([
+                        'theme_location' => 'header_menu_location'
+                    ]); ?>
                 </nav>
 
                 <div class="site-header__util">

@@ -3,7 +3,9 @@
             <div class="group">
                 <div class="site-footer__col-one">
                     <h1 class="school-logo-text school-logo-text--alt-color">
-                        <a href="#"><strong>Completely</strong> Custom</a>
+                        <a href="<?php echo site_url(); ?>">
+                            <strong>Completely</strong> Custom
+                        </a>
                     </h1>
 
                     <p><a class="site-footer__link" href="#">555.555.5555</a></p>
@@ -16,12 +18,9 @@
                         </h3>
 
                         <nav class="nav-list">
-                            <ul>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Programs</a></li>
-                                <li><a href="#">Events</a></li>
-                                <li><a href="#">Campuses</a></li>
-                            </ul>
+                            <?php wp_nav_menu([
+                                'theme_location' => 'footer_menu_location_one'
+                            ]); ?>
                         </nav>
                     </div>
 
@@ -31,11 +30,9 @@
                         </h3>
 
                         <nav class="nav-list">
-                            <ul>
-                                <li><a href="#">Legal</a></li>
-                                <li><a href="#">Privacy</a></li>
-                                <li><a href="#">Careers</a></li>
-                            </ul>
+                            <?php wp_nav_menu([
+                                'theme_location' => 'footer_menu_location_two'
+                            ]); ?>
                         </nav>
                     </div>
                 </div>

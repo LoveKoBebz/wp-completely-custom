@@ -11,6 +11,10 @@ add_action('wp_enqueue_scripts', 'theme_enqueue_assets');
 
 function theme_setup_supports() {
     add_theme_support('title-tag');
+
+    register_nav_menu('header_menu_location', 'Header Menu Location');
+    register_nav_menu('footer_menu_location_one', 'Footer Menu Location One');
+    register_nav_menu('footer_menu_location_two', 'Footer Menu Location Two');
 }
 add_action('after_setup_theme', 'theme_setup_supports');
 
